@@ -1,0 +1,30 @@
+<mat-card class="mat-elevation-z4">
+    <img mat-card-image [src]="dish.image">
+    <mat-card-title>{{dish.title}}</mat-card-title>   
+    <mat-card-content *ngIf="routeIsHome()">
+        <ng-container *ngIf="getDishCharacteristics.length>0">
+            <mat-chip-list>
+                <ng-container *ngFor="let item of getDishCharacteristics">
+                    <mat-chip> 
+                        {{item}}
+                    </mat-chip>
+                </ng-container>
+            </mat-chip-list>
+        </ng-container>
+        <div class="ingredients-container">
+            <h3 class="ingredients-title">Ingredients</h3>
+            <p>{{getIngredients}}</p>
+        </div>
+        <h2 class="dish-price"><strong >{{getDishPrice | number}}$</strong></h2>
+    </mat-card-content>
+    <mat-card-actions fxLayout="column" fxLayoutAlign="center center">
+        <ng-container *ngIf="routeIsHome(); else routeIsSearch">
+            <button mat-button (click)="openDialog()" fxLayout="100" class="details-btn">DETAILS</button>
+            <button mat-button (click)="removeSauceFromMenu()" fxLayout="100" class="remove-btn">REMOVE</button>
+        </ng-container>
+        <ng-template #routeIsSearch>
+            <button mat-button (click)="addSaucerToMenu()" fxLayout="100" class="add-btn">ADD TO CART</button>
+            <button mat-button (click)="openDialog()" fxLayout="100" class="details-btn">DETAILS</button>
+        </ng-template>
+    </mat-card-actions>
+</mat-card>

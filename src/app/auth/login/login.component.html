@@ -1,0 +1,35 @@
+<div fxLayoutAlign="center center" fxFlex class="main-div">
+    <mat-card fxFlex="30" fxFlex.xs="60">
+        <mat-toolbar class="toolbar text-center">
+            <h3>Login</h3>
+        </mat-toolbar>
+        <form fxLayoutAlign="stretch" 
+                fxLayout="column"
+                class="login-form"
+                (ngSubmit)="login()"
+                [formGroup]="loginForm">
+            <mat-form-field>
+                <input matInput placeholder="Email" formControlName="email">
+                <mat-error *ngIf="validateField('email')">
+                    {{getErrorMessage('email')}}.
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input type="password" matInput placeholder="Password" formControlName="password">
+                <mat-error *ngIf="validateField('password')">
+                    {{getErrorMessage('password')}}.
+                </mat-error>
+            </mat-form-field>
+            <button mat-raised-button 
+                    color="primary"
+                    type="submit">
+                    Sign in
+                    <mat-icon>login</mat-icon>
+            </button>
+        </form>
+        <div class="footer" fxLayout="column" fxLayoutAlign="center center">
+            <strong class="text-center">Challenge Alkemy</strong>
+            <strong class="text-center">Gabriel M. Barraza</strong>
+        </div>
+    </mat-card>
+</div>

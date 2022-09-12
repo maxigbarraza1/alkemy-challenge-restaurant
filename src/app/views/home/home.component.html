@@ -1,0 +1,28 @@
+<app-nav-bar></app-nav-bar>
+<main class="main-container" fxLayout="column" fxLayoutAlign="center center">
+    <ng-container *ngIf="saucersLength>0; else noData">
+        <div class="information-container"
+        fxFlex="80%"
+        fxFlex.sm="80%" 
+        fxFlex.xs="100%">
+        <app-menu-information [dishes]="dishes | async"></app-menu-information>
+    </div>
+    <h2 class="mid-title">Selected menu</h2>
+    <div class="grid-container" fxLayoutAlign="center center">
+        <app-dish-cards-grid [dishes]="dishes | async"></app-dish-cards-grid>        
+    </div>
+    </ng-container>
+
+    <ng-template #noData>
+        <div fxLayout="column" fxLayoutAlign="center center" class="no-data">
+            <h2 class="no-data-title">Empty menu!</h2>
+            <mat-icon class="no-data-icon">pending</mat-icon>
+            <h3>
+                Try to
+                <strong>add a new Saucer</strong>
+                to your menu on
+                <strong>Menu tab</strong>
+            </h3>
+        </div>
+    </ng-template>
+</main>

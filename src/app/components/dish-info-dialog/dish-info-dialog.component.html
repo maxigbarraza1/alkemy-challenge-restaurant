@@ -1,0 +1,48 @@
+<ng-container *ngIf="localDish">
+    <mat-card class="mat-elevation-z4" fxLayout="column" fxLayoutAlign="center center">
+        <button mat-button class="close-button" (click)="closeDialog()"><mat-icon>close</mat-icon></button>
+        <mat-card-title>{{getDishName}}</mat-card-title>   
+        <img mat-card-image [src]="getDishImg">
+        <ng-container *ngIf="getDishCharacteristics.length>0">
+            <mat-chip-list>
+                <ng-container *ngFor="let item of getDishCharacteristics">
+                    <mat-chip> 
+                        {{item}}
+                    </mat-chip>
+                </ng-container>
+            </mat-chip-list>
+        </ng-container>
+        <!-- HOME -->
+        <ng-container *ngIf="routeIsHome(); else routeIsSearch">
+            <div class="details">
+                <div class="progress-bar">
+                    <span class="progress-bar-title">Price</span>
+                    <mat-progress-bar mode="determinate" [value]="getPricePercent"></mat-progress-bar>
+                    <span class="progress-bar-values">{{this.getDishPrice}} / {{getMenuTotalPrice}}</span>
+                </div>
+                <div class="progress-bar">
+                    <span class="progress-bar-title">Time</span>
+                    <mat-progress-bar mode="determinate" [value]="getTimePercent"></mat-progress-bar>
+                    <span class="progress-bar-values">{{localDish.readyInMinutes}} / {{getMenuTotalTime}}</span>
+                </div>
+                <div class="progress-bar">
+                    <span class="progress-bar-title">HealthScore</span>
+                    <mat-progress-bar mode="determinate" [value]="getHealthScorePercent"></mat-progress-bar>
+                    <span class="progress-bar-values">{{localDish.healthScore}} / {{getMenuTotalHealthScore}}</span>
+                </div>
+            </div>
+        </ng-container>
+
+        <!-- Search -->
+        <ng-template #routeIsSearch>
+            <mat-card-content fxLayout="column" fxLayoutAlign="center center">
+                <div class="ingredients-container">
+                    <h2 class="ingredients-title">Ingredients</h2>
+                    <p>{{getIngredients}}</p>
+                </div>
+                <h2 class="dish-price"><strong >{{getDishPrice | number}}$</strong></h2>
+            </mat-card-content>
+        </ng-template>
+        
+    </mat-card>
+</ng-container>

@@ -1,0 +1,19 @@
+<mat-card class="mat-elevation-z4">
+    <mat-card-title class="ressume-title">Menu overview</mat-card-title>   
+    <mat-card-content>
+        <mat-chip-list>
+            <mat-chip color="primary" selected matTooltip="Precio del menu seleccionado">
+                <mat-icon >price_change</mat-icon>
+                {{MenuPrice}}$
+            </mat-chip>
+            <mat-chip color="accent" selected matTooltip="Tiempo promedio de coccion">
+                <mat-icon >schedule</mat-icon>
+                {{MenuTime}}min
+            </mat-chip>
+            <mat-chip class="healt-chip" matTooltip="HealtScore">
+                <mat-icon >health_and_safety</mat-icon>
+                {{MenuHealtScore}}
+            </mat-chip>
+        </mat-chip-list>
+    </mat-card-content>
+</mat-card>

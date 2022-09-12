@@ -1,0 +1,11 @@
+<div class="content">
+    <div fxLayout="row wrap" fxLayoutGap="16px grid">
+        <div [fxFlex]="getGridSize + '%'"
+            fxFlex.sm="50%" 
+            fxFlex.xs="100%"
+            fxLayoutAlign="center center"
+            *ngFor="let dish of dishes">
+            <app-dish-card [dish]="dish"></app-dish-card>
+        </div>
+    </div>
+</div>
